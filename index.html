@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>西安古城文脉地图</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 确保地图容器有明确高度，避免 flex 百分比级联失效 */
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map-wrap { position: relative; height: 100%; }
+    #map { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- ═══ 侧边栏 ═══════════════════════════ -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <h1>🏯 西安古城文脉地图</h1>
+        <p class="subtitle">一图览古城 · 一点知千年</p>
+      </div>
+      <div class="sidebar-scroll" id="site-list">
+        <!-- JS 动态渲染 -->
+      </div>
+    </aside>
+
+    <!-- ═══ 地图区 ═══════════════════════════ -->
+    <div id="map-wrap">
+      <button id="toggle-sidebar" title="展开/收起列表">☰</button>
+      <div id="map"></div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script src="js/data.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>
