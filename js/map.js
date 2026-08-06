@@ -55,14 +55,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var TDT_KEY = '057eb2c5c000c132a3773c326aa58fdf';
 
   // ── 地图初始化 ──────────────────────────────
+  // 地图初始化（中心用 GCJ-02 坐标，与天地图瓦片对齐）
   var map = L.map('map', {
-    center: [34.20, 108.90],
+    center: [34.205, 108.911],
     zoom: 10,
     minZoom: 8,
     maxZoom: 18
   });
 
-  // 天地图底图（vec_w）
+  // 天地图底图（vec_w）— WMTS 接口
   L.tileLayer(
     'https://t{s}.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=' + TDT_KEY,
     { subdomains: ['0','1','2','3','4','5','6','7'], maxZoom: 18, attribution: '&copy; 天地图' }
@@ -87,9 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var markerMap = {};
 
   sites.forEach(function (site) {
-    var gcj = wgs84ToGcj02(site.lng, site.lat);
-
-    var marker = L.marker([gcj[1], gcj[0]], { icon: redDotIcon })
+    // 诊断：暂时使用原始 WGS-84 坐标，不转换 GCJ-02
+    var marker = L.marker([site.lat, site.lng], { icon: redDotIcon })
       .addTo(map)
       .bindPopup(
         '<div class="popup-content">' +
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '</div>';
 
       card.addEventListener('click', function () {
-        map.setView([gcj[1], gcj[0]], 16, { animate: true });
+        map.setView([site.lat, site.lng], 16, { animate: true });
         setTimeout(function () {
           markerMap[site.id].openPopup();
         }, 400);
