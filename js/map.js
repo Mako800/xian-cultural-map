@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (toggleBtn && sidebar) {
     toggleBtn.addEventListener('click', function () {
       sidebar.classList.toggle('collapsed');
+      toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '▶' : '◀';
     });
   }
 });
