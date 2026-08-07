@@ -54,8 +54,16 @@ img { max-width: 100%; display: block; }
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  transition: margin-left 0.3s ease;
+  transition: width 0.3s ease, min-width 0.3s ease;
   z-index: 1000;
+  overflow: hidden;
+}
+
+/* 收起状态（桌面端：宽度缩为 0） */
+#sidebar.collapsed {
+  width: 0;
+  min-width: 0;
+  border-right: none;
 }
 
 .sidebar-header {
@@ -222,9 +230,21 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
 }
 
-/* ── 移动端切换按钮 ──────────────────────── */
+/* ── 侧边栏底部 ──────────────────────────── */
+.sidebar-footer {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+/* ── 侧边栏切换按钮 ──────────────────────── */
 #toggle-sidebar {
-  display: none;
+  display: block;
   position: absolute;
   top: 12px;
   left: 12px;
@@ -232,10 +252,16 @@ img { max-width: 100%; display: block; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 8px 12px;
-  font-size: 18px;
+  padding: 7px 11px;
+  font-size: 17px;
   cursor: pointer;
   box-shadow: var(--shadow);
+  transition: background 0.2s;
+}
+
+#toggle-sidebar:hover {
+  background: var(--red-light);
+  border-color: var(--red);
 }
 
 /* ── Leaflet 样式覆写 ────────────────────── */
@@ -260,14 +286,15 @@ img { max-width: 100%; display: block; }
     top: 0;
     height: 100%;
     box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+    transition: margin-left 0.3s ease;
   }
 
+  /* 移动端使用滑出而非宽度收缩 */
   #sidebar.collapsed {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
     margin-left: calc(-1 * var(--sidebar-w));
-  }
-
-  #toggle-sidebar {
-    display: block;
+    border-right: 1px solid var(--border);
   }
 
   :root {

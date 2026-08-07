@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ── 移动端菜单切换 ──────────────────────────
+  // ── 侧边栏切换按钮 ──────────────────────────
   var toggleBtn = document.getElementById('toggle-sidebar');
   var sidebar = document.getElementById('sidebar');
   if (toggleBtn && sidebar) {
