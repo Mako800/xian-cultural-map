@@ -2,6 +2,8 @@
 
 Author: Mako800
 
+**本项目已经正式上线公网，访问 [https://mako800.github.io/xian-cultural-map/](https://mako800.github.io/xian-cultural-map/) 即可看到网页。**
+
 Xi'an Ancient City Cultural Map — 一个交互式 Web 地图，在西安市地图上标记具有历史文化价值的景点，点击即可浏览图文并茂的历史文化知识讲解。
 
 **一图览古城 · 一点知千年**
@@ -77,6 +79,9 @@ web/
 1. 克隆仓库
 2. 直接用浏览器打开 `web/index.html` 即可预览
 3. 无需安装依赖、无需启动服务器、无需 API Key（地图使用天地图免费瓦片）
+
+
+**（注：本项目已经正式上线公网，访问 [https://mako800.github.io/xian-cultural-map/](https://mako800.github.io/xian-cultural-map/) 即可看到网页。）**
 
 ---
 
